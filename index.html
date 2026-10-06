@@ -1,70 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PitchDesk — Live Sports Blog</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICE777</title>
+<style>
+:root{
+  --ice-red:#ed101c;
+  --ice-red-dark:#c90012;
+  --ice-black:#080808;
+  --ice-panel:#141414;
+  --ice-border:#383838;
+  --ice-text:#f5f5f5;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:var(--ice-black);
+  color:var(--ice-text);
+}
+
+.container{
+  display:flex;
+  flex-direction:row-reverse;
+  min-height:100vh;
+}
+
+.demo{
+  width:70%;
+  background:#000;
+  position:relative;
+}
+
+iframe{
+  width:100%;
+  height:100vh;
+  border:none;
+}
+
+.right{
+  width:30%;
+  padding:30px 22px;
+  background:linear-gradient(180deg,#1b1b1b,#090909);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-y:auto;
+}
+
+.box{
+  width:100%;
+  background:var(--ice-panel);
+  border:1px solid var(--ice-border);
+  border-top:3px solid var(--ice-red);
+  border-radius:8px;
+  padding:26px 20px;
+  text-align:center;
+  box-shadow:0 8px 28px rgba(0,0,0,.45);
+}
+
+.badge{
+  display:inline-block;
+  background:var(--ice-red);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:4px;
+  font-weight:800;
+  margin-bottom:16px;
+}
+
+h1{
+  font-size:34px;
+  color:#fff;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+.sub{
+  font-size:17px;
+  line-height:1.5;
+  margin-bottom:22px;
+  color:#ddd;
+}
+
+.features{
+  display:grid;
+  gap:12px;
+  margin:22px 0;
+}
+
+.feature{
+  background:linear-gradient(90deg,#191919,#242020);
+  border:1px solid #383838;
+  border-left:3px solid var(--ice-red);
+  padding:14px;
+  border-radius:4px;
+  font-size:17px;
+  font-weight:700;
+}
+
+.feature span{
+  color:#ff4a52;
+}
+
+.signup-btn{
+  display:inline-block;
+  margin-top:8px;
+  padding:9px 16px;
+  background:var(--ice-red);
+  color:#fff;
+  text-decoration:none;
+  border-radius:4px;
+  font-size:15px;
+  font-weight:800;
+  border:1px solid var(--ice-red-dark);
+  transition:.2s;
+}
+
+.signup-btn:hover{
+  background:var(--ice-red-dark);
+}
+
+.website-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-top:16px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.website-row a{
+  text-decoration:none;
+}
+
+.website{
+  color:#ff4a52;
+}
+
+.whatsapp-small{
+  color:#39c66a;
+}
+
+.cta{
+  display:block;
+  background:#168f43;
+  color:#fff;
+  text-decoration:none;
+  padding:17px;
+  border-radius:4px;
+  font-size:20px;
+  font-weight:900;
+  margin-top:22px;
+  transition:.2s;
+}
+
+.cta:hover{
+  background:#107638;
+}
+
+.floating-signup{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:50;
+  background:var(--ice-red);
+  color:#fff;
+  padding:12px 24px;
+  border-radius:4px;
+  font-size:18px;
+  font-weight:900;
+  border:2px solid #fff;
+  box-shadow:0 8px 20px rgba(237,16,28,.4);
+  transition:.2s;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.floating-signup:hover{
+  transform:translateX(-50%) scale(1.04);
+  background:var(--ice-red-dark);
+}
+
+.trust{
+  margin-top:16px;
+  color:#ddd;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.footer{
+  margin-top:18px;
+  font-size:12px;
+  color:#aaa;
+  line-height:1.5;
+}
+
+.bonus-popup{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:rgba(0,0,0,.82);
+}
+
+.bonus-popup[hidden]{
+  display:none;
+}
+
+.bonus-dialog{
+  position:relative;
+  width:min(100%,420px);
+  padding:34px 24px 28px;
+  border:2px solid var(--ice-red);
+  border-radius:8px;
+  background:#141414;
+  text-align:center;
+  color:var(--ice-text);
+  box-shadow:0 18px 60px rgba(0,0,0,.7);
+  animation:popup-enter .24s ease-out;
+}
+
+.bonus-close{
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0;
+  background:transparent;
+  color:#fff;
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+}
+
+.bonus-dialog h2{
+  margin-bottom:10px;
+  color:var(--ice-red);
+  font-size:30px;
+}
+
+.bonus-dialog p{
+  margin-bottom:22px;
+  color:#eee;
+  line-height:1.7;
+}
+
+.bonus-claim{
+  display:block;
+  padding:14px 18px;
+  border-radius:4px;
+  background:var(--ice-red);
+  color:#fff;
+  font-size:17px;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.bonus-claim:hover{
+  background:var(--ice-red-dark);
+}
+
+@keyframes popup-enter{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .bonus-dialog{animation:none}
+}
+
+@media(max-width:768px){
+  .container{
+    flex-direction:column-reverse;
+  }
+
+  .demo,
+  .right{
+    width:100%;
+  }
+
+  iframe{
+    height:500px;
+  }
+
+  .right{
+    padding:20px;
+  }
+}
+
+@media(max-width:480px){
+  h1{
+    font-size:28px;
+  }
+
+  .sub{
+    font-size:16px;
+  }
+
+  .feature{
+    font-size:16px;
+    padding:12px;
+  }
+
+  .signup-btn{
+    font-size:14px;
+    padding:8px 13px;
+  }
+
+  .cta{
+    font-size:18px;
+    padding:15px;
+  }
+
+  .website-row{
+    flex-direction:column;
+    gap:8px;
+  }
+}
+</style>
 </head>
 <body>
-  <header class="top">
-    <div class="brand">
-      <div>
-        <h1>Pitch<span>Desk</span></h1>
-        <small class="sans">Sports blog · 4 October 2026</small>
-      </div>
-    </div>
-    <nav>
-      <a class="on" href="index.html">Home</a>
-      <a href="kabaddi.html">Kabaddi</a>
-      <a href="football.html">Football</a>
-      <a href="cricket.html">Cricket</a>
-      <a href="scores.html">Scores</a>
-    </nav>
-  </header>
-  <div class="ticker sans">
-    <span>ASIAN GAMES GOLD: India 211/6 beat Pakistan 192/6 by 19 runs &nbsp;·&nbsp; WI beat India in 3rd ODI, New Chandigarh &nbsp;·&nbsp; PKL 12: no match today, Pune and Delhi tied on 26 points &nbsp;·&nbsp; Premier League returns 10 October: Arsenal vs Leeds, Liverpool vs Man City &nbsp;·&nbsp; ASIAN GAMES GOLD: India 211/6 beat Pakistan 192/6 by 19 runs &nbsp;·&nbsp; </span>
+<div class="bonus-popup" id="bonusPopup" role="dialog" aria-modal="true" aria-labelledby="bonusTitle">
+  <div class="bonus-dialog">
+    <button class="bonus-close" id="bonusClose" type="button" aria-label="Close bonus popup">&times;</button>
+    <h2 id="bonusTitle">Bonus Offer</h2>
+    <p>10% Deposit Bonus<br>15% Losing Bonus<br>3% Referral Bonus</p>
+    <a class="bonus-claim" href="https://ice777.com/clk?src=gtm1t8Y7ZO/rWdOELQxMP">Sign Up with ICE777</a>
   </div>
-  <main>
-    <div>
-      <section class="hero">
-        <p class="kicker">Home</p>
-        <h2>India beat Pakistan by 19 runs to win Asian Games cricket gold</h2>
-        <p class="meta">Gold medal match · Korogi Sports Park, Nisshin · 3 October 2026</p>
-        <div class="score">
-          <div>India <b>211/6</b> <span class="muted">(20)</span></div>
-          <span class="badge">IND won</span>
-          <div>Pakistan <b>192/6</b> <span class="muted">(20)</span></div>
+</div>
+
+<div class="container">
+  <div class="demo">
+    <a href="https://ice777.com/clk?src=gtm1t8Y7ZO/rWdOELQxMP" target="_blank" rel="noopener noreferrer" class="floating-signup">SIGN UP WITH ICE777</a>
+    <iframe src="https://ice777.com/clk?src=gtm1t8Y7ZO/rWdOELQxMP" title="ICE777"></iframe>
+  </div>
+
+  <div class="right">
+    <div class="box">
+      <div class="badge">ICE777</div>
+      <h1>Get Your ID Now</h1>
+      <p class="sub">Fast auto website service with easy deposit support. New users can start quickly through WhatsApp.</p>
+
+      <div class="features">
+        <div class="feature">Minimum Deposit: <span>₹100 Only</span></div>
+        <div class="feature">Welcome Bonus: <span>10%</span></div>
+        <div class="feature">
+          ICE777 Signup:
+          <a class="signup-btn" href="https://ice777.com/clk?src=gtm1t8Y7ZO/rWdOELQxMP" target="_blank" rel="noopener noreferrer">Sign Up with ICE777</a>
         </div>
-        <p>Abhishek Sharma made 61 off 28 and Tilak Varma finished 51 not out off 22. Pakistan’s chase stopped at 192/6. Open a desk for the full note.</p>
-        <p class="links">
-          <a href="cricket.html">Cricket report</a>
-          <a href="kabaddi.html">Kabaddi desk</a>
-          <a href="football.html">Football desk</a>
-          <a href="scores.html">All scores</a>
-        </p>
-      </section>
-      <article>
-        <p class="kicker">Today</p>
-        <h3>Three desks, one blog</h3>
-        <ul>
-          <li>Kabaddi: no PKL fixture on 4 October. Pune and Delhi level on 26 points.</li>
-          <li>Football: Premier League back on 10 October. Arsenal vs Leeds, United vs Spurs.</li>
-          <li>Cricket: West Indies won the 3rd ODI by 5 wickets after India took the first two.</li>
-        </ul>
-      </article>
+        <div class="feature">Quick Help: <span>Deposit &amp; Withdrawal Support</span></div>
+      </div>
+
+      <div class="website-row">
+        <a class="website" href="https://ice777.com/clk?src=gtm1t8Y7ZO/rWdOELQxMP" target="_blank" rel="noopener noreferrer">ICE777 website</a>
+        <a class="whatsapp-small" href="https://wa.me/+447523709988" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+
+      <a class="cta" href="https://wa.me/+447523709988?text=Hello%20I%20want%20new%20manual%20ID" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
+      <p class="trust">Trusted Manual Support<br>Simple Process<br>Fast Response</p>
+      <div class="footer">18+ Only | Play Responsibly | Follow Your Local Laws | T&amp;C Apply</div>
     </div>
-    <aside>
-      <section>
-        <p class="kicker">Jump</p>
-        <h3>Pages</h3>
-        <p><a href="kabaddi.html">Kabaddi</a></p>
-        <p><a href="football.html">Football</a></p>
-        <p><a href="cricket.html">Cricket</a></p>
-        <p><a href="scores.html">Scoreboard</a></p>
-      </section>
-    </aside>
-  </main>
-  <footer>PitchDesk · 5 connected pages</footer>
+  </div>
+</div>
+
+<script>
+const bonusPopup = document.getElementById('bonusPopup');
+const bonusClose = document.getElementById('bonusClose');
+
+function closeBonusPopup(){
+  bonusPopup.hidden = true;
+}
+
+bonusClose.addEventListener('click', closeBonusPopup);
+bonusPopup.addEventListener('click', (event) => {
+  if(event.target === bonusPopup) closeBonusPopup();
+});
+document.addEventListener('keydown', (event) => {
+  if(event.key === 'Escape') closeBonusPopup();
+});
+</script>
 </body>
 </html>
